@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Conference | Speakers 5</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+  	<!-- begin nav-bar -->
+      <nav>
+        <ul>
+            <li><a class="brand" href="index.html"><b class="brandColor">CAT</b> Speakers Panel</a></li>
+            <div class="rightfloat">
+                <li><a href="json.html"><b>JSON Speakers</b></a></li>
+                <li><a href="sql.html"><b>SQL Speakers</b></a></li>
+                <li><a href="#about"><b>Contact</b></a></li>
+            </div>
+        </ul>
+    </nav> 
+    <!-- end nav-bar -->
+      
+       
+    	  
+    </body>
+    <h1 style="margin: 20px; color:#FF4F41">JSON Speakers</h1>
+    <h2 style="margin: 20px; color:rgb(167, 167, 167); font-size:18px;"; >Cat Panel 2020</h2>
+    <script src="lib/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+			
+		$(document).ready( function(){
+			
+			$.getJSON("php/get_speakers_list.php",
+				function(data){
+					$("#speakers-container").empty(); 
+//////////////////  ES6 method  /////////////////////////////
+					$.each(data, function(idx, value) {
+							$('#speakers-container').append(`
+								<div>
+									<img src="images/${value.image}" alt="${value.image}"/>
+									<p>
+										<span>
+											 ${value.name} 
+										</span>			
+                                        ${value.bio}
+									</p>
+								</div>`);
+							} //function
+					);//each
+				}//function(data)
+			);//getJSON
+			
+		}); //ready	
+	</script>
+    
+    
+</html>
